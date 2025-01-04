@@ -1,0 +1,75 @@
+services:
+ db:
+  image: mysql
+  restart: always
+  environment:
+   MYSQL_ALLOW_EMPTY_PASSWORD: yes
+   MYSQL_DATABASE: church
+   MYSQL_USER: lord
+   MYSQL_PASSWORD: nganga
+   
+
+  
+  volumes:
+   - ./data/db:/var/lib/mysql  
+   
+ backend:
+  build:
+   context: ./django/backend
+
+  command : gunicorn backend.wsgi --bind 0.0.0.0:8000
+  depends_on:
+   - db
+   - rabbit
+
+  env_file:
+   - "./django/backend/.env"
+ 
+  develop:
+   watch:
+    - action: sync
+      path: ./django/backend
+      target: /backend 
+      
+    - action: rebuild
+      path: requirements.txt
+
+      
+ frontend:
+  build:
+   context: ./front
+
+  develop:
+   watch:
+    - action: sync
+      path: ./front
+      target: /front 
+      
+    - action: rebuild
+      path: package.json
+ 
+  command : npm run dev 
+
+ rabbit:
+  image: rabbitmq
+  network_mode: "host"
+   
+ nginx:
+  build:
+    context: ./nginx
+  ports:
+   - 80:8080
+  
+  depends_on:
+   - backend
+   - frontend
+
+ celery:
+  restart: always
+  build: ./django/backend
+  command: celery -A backend worker -l INFO
+  depends_on:
+   - db
+   - backend
+   - rabbit
+  network_mode: "host"
