@@ -71,7 +71,7 @@ export default function SignUp(props) {
       password : password,
       grant_type : 'password',
       client_id: '3AoEhmSW2u6J3C03yzdRbNlOFhX0tIXymefxJUXS',
-      client_secret: 'rTFnQqK3Yn3GJR3JiSzBnZhzwn8piQvAaZU7RFYD3uWxqNU1BdNO2fYvkrY2laRaLuXImbwGhWmLcElhivZBz5kcMZ7kdE2Pr0nZUuo8KpFjCKS3Tggl45PdAvfjqDd3',
+      client_secret: '',
  
   
     }).then((res)=>{
