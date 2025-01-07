@@ -104,7 +104,7 @@ export default function SignUp(props) {
   const handleclick = ()=>{
     
     axios.post('http://localhost/api/password_reset/',{
-      email : 'lordjiiinx@gmail.com'
+      email : ''
       
       
  

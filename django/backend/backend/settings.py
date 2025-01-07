@@ -149,8 +149,8 @@ AUTHENTICATION_BACKENDS = (
     'drf_social_oauth2.backends.DjangoOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '864428733289-sap7lgshc90299ros25rr5sqkgm4dluv.apps.googleusercontent.com'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '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'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ''
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
     'https://www.googleapis.com/auth/userinfo.email',
@@ -173,11 +173,11 @@ AUTH_USER_MODEL = 'members.newuser'
 
 EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'lordjiiinx@gmail.com'
-EMAIL_HOST_PASSWORD = 'tgnuplgxonbbbpiq'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 587 
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'lordjiiinx@gmail.com'
+DEFAULT_FROM_EMAIL = ''
 
 
 
@@ -194,7 +194,7 @@ CORS_ALLOWED_ORIGINS = [
 DJANGO_REST_PASSWORDRESET_TOKEN_CONFIG = {
     "CLASS" : "django_rest_passwordreset.tokens.RandomNumberTokenGenerator",
     "OPTIONS" : {
-        "min_number" : 5,
-        "max_number" : 8
+        "min_number" : 15,
+        "max_number" : 30
     }
 }

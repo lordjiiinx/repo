@@ -19,6 +19,7 @@ const auth = createSlice({
                 value : {
                     isAuth : true,
                     username : action.payload,
+                    group : action.payload,
                 }
             }
         },
